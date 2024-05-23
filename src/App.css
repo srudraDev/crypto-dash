@@ -196,10 +196,26 @@ td {
 
 #home {
   background-color: rgb(107, 3, 3);
+  padding: 0.75vw;
+  border-radius: 0.5vw;
+  transition: background-color 0.25s, border 0.25s;
 }
 
 #home:hover {
   background-color: rgb(179, 44, 51);
+  border: 1px solid whitesmoke;
+}
+
+.custom-tooltip {
+  font-family: inherit;
+  background-color: rgb(56, 50, 50);
+  padding: 1vw;
+  border: 1px solid whitesmoke;
+}
+
+.chart-container {
+  background-color: #131212;
+  padding: 1vw;
 }
 
 #crypto-icon {

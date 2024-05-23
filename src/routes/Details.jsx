@@ -1,6 +1,7 @@
 import '../App.css';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import DataChart from './DataChart';
 
 const Details = () => {
     let params = useParams();
@@ -13,10 +14,14 @@ const Details = () => {
     const [detailData, setDetailData] = useState([]);
     const [lastRefresh, setLastRefresh] = useState(null);
 
+    const controller = new AbortController();
+
     const fetchDetails = async (id) => {
         try {
-            const priceResponse = await fetch(priceURL);
-            const detailResponse = await fetch(detailURL);
+            const [priceResponse, detailResponse] = await Promise.all([
+                fetch(priceURL),
+                fetch(detailURL)
+            ]);
             const priceData = await priceResponse.json();
             const detailData = await detailResponse.json();
             setPriceData(priceData);
@@ -27,11 +32,17 @@ const Details = () => {
                 alert("Data refreshed!");
             }
         } catch (error) {
-            console.error("Error:", error);
+            if (error.name === 'AbortError') {
+                console.log("Fetch aborted");
+            } else
+                console.error("Error:", error);
         }
     };
     useEffect(() => {
         fetchDetails("default");
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     function formatDescription(rawDescription) {
@@ -46,8 +57,6 @@ const Details = () => {
             return punct + "\n" + char;
         });
         const blocks = spaced.split(/\n/);
-        console.debug(blocks);
-
         // Group blocks into paragraphs/headings
         const elements = [];
         let currentParagraph = "";
@@ -79,11 +88,9 @@ const Details = () => {
 
     return (
         <>
-            <button id="home">
-                <Link style={{ color: "white" }} to="/">
-                    Home
-                </Link>
-            </button>
+            <Link id="home" style={{ color: "white" }} to="/">
+                Home
+            </Link>
             { detailData.Data === undefined || priceData.DISPLAY === undefined ? <p>Loading...</p> :
                 <>
                     <div className="header">
@@ -106,7 +113,13 @@ const Details = () => {
                         >
                             Refresh
                         </button>
+                        <p className="last-refresh">
+                            Last refreshed:{" "}
+                            {lastRefresh ? lastRefresh.toLocaleTimeString() : "Never"}
+                        </p>
                     </div>
+                    <DataChart symbol={symbol} market={priceData.DISPLAY[symbol].USD.MARKET} />
+
                     <div id="table-div">
                     <h2>Details</h2>
                     <table id="detail-table">

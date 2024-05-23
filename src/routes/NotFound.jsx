@@ -1,14 +1,13 @@
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
     return (
         <>
             <p>Nothing to see here!</p>
-            <button id='home'>
-                <Link style={{ color: "white" }} to="/">
-                    Return Home
-                </Link>
-            </button>
+            <Link  id="home" style={{ color: "white" }} to="/">
+                Return Home
+            </Link>
         </>
     )
 }
