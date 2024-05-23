@@ -115,6 +115,15 @@
   border-radius: 0.5vw;
 }
 
+.page {
+  display: flex;
+}
+
+.content {
+  margin: 1em;
+  width: 65vw;
+}
+
 #crypto-icon {
   width: 5vw;
   height: 5vw;
