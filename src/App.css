@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100vw;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -18,15 +18,9 @@
   height: 3vw;
 }
 
-.crypto-data {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.crypto-item-container:hover .crypto-data {
-  display: block;
-  opacity: 1;
+.crypto-item-container:hover {
+  transform: scale(1.05); /* Add scale transform on hover */
+  background-color: #052c65;
 }
 
 .crypto-item-container {
@@ -38,7 +32,7 @@
   padding: 2vw;
   margin: 1vw 0;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.23vw rgba(255, 255, 255, 0.998);
+  box-shadow: 0 0 0.2vw rgba(255, 255, 255, 0.998);
   transition: transform 0.3s ease-in-out;
   background-color: rgb(51, 51, 51);
 }
@@ -69,6 +63,7 @@
   padding: 0.5vw;
   border-radius: 0.5vw;
   width: 20vw;
+  margin-bottom: 1vw;
 }
 
 .header {
@@ -77,6 +72,47 @@
   align-items: center;
   gap: 2vw;
   margin-bottom: -2vw;
+}
+
+.crypto-ticker {
+  width: fit-content;
+  animation-name: ticker;
+  animation-duration: 100s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 1vw;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.abbreviated-name {
+  margin: 1vw;
+}
+
+.abbreviated-name:hover {
+  color: rgb(34, 113, 232);
+}
+
+.moving {
+  width: 1vw;
+  height: 1vw;
+}
+
+.nyse-moving-ticker {
+  overflow-x: hidden;
+  width: 100%;
+  background-color: black;
+  box-shadow: 0 0 0.2vw rgba(255, 255, 255, 0.998);
+  border-radius: 0.5vw;
 }
 
 #crypto-icon {

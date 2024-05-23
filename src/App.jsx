@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-
+import { useState, useEffect } from 'react';
+import './App.css';
+import green from '../assets/market-up.png';
+import red from '../assets/market-down.png';
 function App() {
     const [cryptoList, setCryptoList] = useState([]);
     const api_key = import.meta.env.VITE_API_KEY;
@@ -37,6 +38,18 @@ function App() {
 
     return (
         <>
+        <div className="nyse-moving-ticker">
+            <div className="crypto-ticker">
+                {cryptoList.map((coin, index) => (
+                    <a style={{ color: 'white' }}href={`https://www.cryptocompare.com${coin.CoinInfo.Url}`} >
+                        <span className="abbreviated-name" key={coin.CoinInfo.Id}>
+                            <b>{coin.CoinInfo.Name}:</b> {coin.DISPLAY ? coin.DISPLAY.USDD.PRICE.substring(4) + ' ' : 'N/A '}
+                            {coin.DISPLAY ? <img className="moving" src={coin.DISPLAY.USDD.CHANGEPCT24HOUR > 0 ? green : red} alt="market change"></img> : null}
+                        </span>
+                    </a>
+                ))}
+            </div>
+            </div>
             <div classnam="header">
                 <h1>Crypto Board</h1>
                 <img id='crypto-icon' src='/crypto-icon.png' alt='crypto-icon' />
@@ -79,6 +92,6 @@ function App() {
             </div>
         </>
     )
-}
+};
 
 export default App
