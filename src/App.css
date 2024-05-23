@@ -20,7 +20,7 @@
 
 .crypto-item-container:hover {
   transform: scale(1.05); /* Add scale transform on hover */
-  background-color: #052c65;
+  background-color: #021c42;
 }
 
 .crypto-item-container {
@@ -35,6 +35,7 @@
   box-shadow: 0 0 0.2vw rgba(255, 255, 255, 0.998);
   transition: transform 0.3s ease-in-out;
   background-color: rgb(51, 51, 51);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 .cryptos-list {
@@ -115,6 +116,17 @@
   border-radius: 0.5vw;
 }
 
+.sidenav {
+  width: 18vw;
+  background-color: #fdde56;
+  margin-right: 1vw;
+  padding: 2vw;
+  margin-left: 0;
+  top: 0;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 0.2vw rgba(255, 255, 255, 0.998);
+}
+
 .page {
   display: flex;
 }
@@ -122,6 +134,72 @@
 .content {
   margin: 1em;
   width: 65vw;
+}
+
+.coin-detail-image {
+  width: 10vw;
+  height: 10vw;
+}
+
+/* Table */
+table {
+  width: fit-content;
+  width: 100%;
+  border: 1px solid whitesmoke;
+}
+
+/* Table Header */
+thead {
+  background-color: rgb(31, 30, 30);
+  color: rgb(255, 255, 255);
+  border: 1px solid whitesmoke;
+}
+
+/* Table Header Cells */
+th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid whitesmoke;
+}
+
+/* Table Body */
+tbody {
+  background-color: rgb(49, 49, 49);
+  color: rgb(255, 255, 255);
+  
+}
+
+/* Table Cells */
+td {
+  padding: 10px;
+  border: 1px solid whitesmoke;
+}
+
+#table-div {
+  align-items: center;
+  justify-content: center;
+}
+
+#refresh {
+  background-color: rgb(16, 63, 133);
+}
+
+#refresh:hover {
+  background-color: rgb(34, 113, 232);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+}
+
+#home {
+  background-color: rgb(107, 3, 3);
+}
+
+#home:hover {
+  background-color: rgb(179, 44, 51);
 }
 
 #crypto-icon {

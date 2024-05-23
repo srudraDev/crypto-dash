@@ -1,17 +1,22 @@
 import "../App.css";
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
     const coin = props.card;
-    const image_url = "https://www.cryptocompare.com";
+    const imageUrl = "https://www.cryptocompare.com";
     return (
         <>
             {coin.CoinInfo ? (
-                <a style={{ color: 'white' }} href={`https://www.cryptocompare.com${coin.CoinInfo.Url}`} >
                     <div className="crypto-item-container" key={coin.CoinInfo.Id}>
                         <div className="crypto-row">
                             <div className="crypto">
-                                <img className="crypto-image" src={`${image_url}${coin.CoinInfo.ImageUrl}`} alt={coin.CoinInfo.FullName} />
+                                <img className="crypto-image" src={`${imageUrl}${coin.CoinInfo.ImageUrl}`} alt={coin.CoinInfo.FullName} />
                                 <h3>{coin.CoinInfo.FullName} ({coin.CoinInfo.Name})</h3>
+                                    <Link to={"/details/" + coin.CoinInfo.Name}>
+                                        <button className='button button-detail'>
+                                            View Details 
+                                        </button>
+                                    </Link>
                             </div>
                             <div className="crypto-data">
                                 {coin.DISPLAY ?
@@ -31,7 +36,6 @@ const Card = (props) => {
                             </div>
                         </div>
                     </div>
-                </a>
             ) : null }
         </>
     );

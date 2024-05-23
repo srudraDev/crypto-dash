@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import SideNav from './components/Sidebar.jsx';
 import Ticker from './components/Ticker.jsx';
 import Card from './components/Card.jsx';
 
 function App() {
     const [cryptoList, setCryptoList] = useState([]);
-    const api_key = import.meta.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY;
     const [fullList, setFullList] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [lastRefresh, setLastRefresh] = useState(null);
 
     useEffect(() => {
-        fetchCoins('default');
+        fetchCoins("default");
     }, []);
 
     const fetchCoins = async (id) => {
-        const url = `https://min-api.cryptocompare.com/data/top/totalvolfull?limit=50&tsym=USD&api_key=${api_key}`;
+        const url = `https://min-api.cryptocompare.com/data/top/totalvolfull?limit=50&tsym=USD&api_key=${apiKey}`;
         try {
             const response = await fetch(url);
             const data = await response.json();
             setCryptoList(data.Data);
             setFullList(data.Data);
             setLastRefresh(new Date());
-            if (id === 'refresh') {
-                alert('Data refreshed!');
+            if (id === "refresh") {
+                alert("Data refreshed!");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -43,15 +44,16 @@ function App() {
 
     return (
         <>
-            <div className='page'>
-                <div className = 'content'>
+            <div className="page">
+                <SideNav />
+                <div className = "content">
                    <Ticker crypto={fullList} />
                     <div className="header">
                         <h1>Crypto Dashboard</h1>
-                        <img id='crypto-icon' src='/crypto-icon.png' alt='crypto-icon' />
+                        <img id="crypto-icon" src="/crypto-icon.png" alt="crypto-icon" />
                     </div>
                     <button 
-                        id='refresh'
+                        id="refresh"
                         onClick={(e) => {
                             const id = e.target.id;
                             fetchCoins(id);
@@ -65,7 +67,7 @@ function App() {
                     </p>
                     <h2>Top Crypto Coins</h2>
                     <p>See some of the most popular coins traded today!</p>
-                    <input type="text" id='search' value={searchInput} placeholder="Search..." onChange={e => searchItems(e.target.value)} />
+                    <input type="text" id="search" value={searchInput} placeholder="Search..." onChange={e => searchItems(e.target.value)} />
                     <div className="cryptos-list">
                         {cryptoList ? cryptoList.map((coin, index) => {
                             return (
