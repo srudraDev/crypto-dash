@@ -5,6 +5,40 @@
   text-align: center;
 }
 
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  gap: 1.5rem;
+}
+
+.navbar button {
+  background: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+@media (prefers-color-scheme: light) {
+  .navbar button {
+    color: #213547;
+  }
+}
+
+.navbar button:hover {
+  border-bottom: 1px solid white;
+}
+
+.navbar button:disabled {
+  color: rgb(119, 119, 119);
+  cursor: default;
+  border-bottom: 2px solid transparent;
+}
+
 .crypto {
   display: flex;
   text-align: center;
@@ -20,7 +54,7 @@
 
 .crypto-item-container:hover {
   transform: scale(1.05); /* Add scale transform on hover */
-  background-color: #021c42;
+  background-color: rgb(2, 28, 66);
 }
 
 .crypto-item-container {
@@ -118,13 +152,30 @@
 
 .sidenav {
   width: 18vw;
-  background-color: #fdde56;
+  background-color: #213547;
   margin-right: 1vw;
   padding: 2vw;
   margin-left: 0;
   top: 0;
+  color: white;
   border-radius: 0.5vw;
   box-shadow: 0 0 0.2vw rgba(255, 255, 255, 0.998);
+}
+
+.sidenav ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+.sidenav li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+.sidenav a {
+    color: rgb(255, 76, 76);
+    text-decoration: none;
+}
+.sidenav a:hover {
+    text-decoration: underline;
 }
 
 .page {
@@ -132,8 +183,10 @@
 }
 
 .content {
-  margin: 1em;
+  margin: 0 auto;
   width: 65vw;
+  min-height: calc(100vh - 5rem);
+  padding-top: 3vh;
 }
 
 .coin-detail-image {
@@ -216,6 +269,38 @@ td {
 .chart-container {
   background-color: #131212;
   padding: 1vw;
+}
+
+.profit-calculator {
+    width: 100%;
+    padding: 1rem;
+    background: rgb(51, 51, 51);
+    border-radius: 10px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page.calculator-page {
+  padding-left: 18vw;
+}
+
+.profit-calculator input {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profit-calculator button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.results p {
+    margin: 0.5rem 0;
 }
 
 #crypto-icon {
