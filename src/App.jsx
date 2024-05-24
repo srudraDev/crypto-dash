@@ -4,12 +4,13 @@ import SideNav from './components/Sidebar.jsx';
 import Ticker from './components/Ticker.jsx';
 import Card from './components/Card.jsx';
 import ProfitCalculator from './components/Calculator.jsx';
+import ChatBot from './components/Chat.jsx';
 
 const NavBar = ({ activePage, setActivePage }) => (
     <nav className="navbar">
         <button onClick={() => setActivePage("home")}>Home</button>
         <button onClick={() => setActivePage("calculator")}>Profit Calculator</button>
-        <button disabled>Coming Soon</button>
+        <button onClick={() => setActivePage("chat")}>AI Chat</button>
     </nav>
 );
 
@@ -99,6 +100,11 @@ function App() {
                 {activePage === "calculator" && (
                     <div className = "content">
                         <ProfitCalculator />
+                    </div>
+                )}
+                {activePage === "chat" && (
+                    <div className="content">
+                        <ChatBot />
                     </div>
                 )}
             </div>
