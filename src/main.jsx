@@ -8,7 +8,7 @@ import NotFound from './routes/NotFound.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/crypto-dash">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/details/:id' element={<Details />} />

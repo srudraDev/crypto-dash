@@ -64,7 +64,7 @@ function App() {
                                 <Ticker crypto={fullList} />
                                 <div className="header">
                                     <h1>Crypto Dashboard</h1>
-                                    <img id="crypto-icon" src="/crypto-icon.png" alt="crypto-icon" />
+                                    <img id="crypto-icon" src="/crypto-dash/crypto-icon.png" alt="crypto-icon" />
                                 </div>
                                 <button 
                                     id="refresh"
